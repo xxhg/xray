@@ -42,7 +42,8 @@ RUN mkdir -p /tmp/var/log/xray && touch \
   /tmp/var/log/xray/error.log
 
 # Build finally image
-FROM gcr.io/distroless/static:nonroot
+# FROM gcr.io/distroless/static:nonroot
+FROM docker.io/alpine
 
 COPY --from=build --chown=0:0 --chmod=755 /src/xray /usr/local/bin/xray
 COPY --from=build --chown=65532:65532 --chmod=755 /tmp/empty /usr/local/share/xray
